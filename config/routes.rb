@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :visitors, only: [:index, :show]
-  resources :geysers, only: [:index, :show]
+  resources :geysers, only: [:index, :show, :destroy]
   resources :animals
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/hello', to: 'application#hello_world'
+  # get '/hello', to: 'application#hello_world'
 
   get '*path',
     to: 'fallback#index',

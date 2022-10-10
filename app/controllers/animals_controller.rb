@@ -32,7 +32,7 @@ class AnimalsController < ApplicationController
     private
 
     def animal_params
-        params.permit(:name, :population, :fact, :image)
+        params.permit(:name, :population, :fact, :image, :spotted)
     end
 
     def not_found

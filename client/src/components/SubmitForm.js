@@ -55,16 +55,16 @@ function SubmitForm ({animals, setAnimals}) {
     return (
         <div className="form_div">
 
-            <p>Add an animal you would like to see in your time here at the park!</p>
+            <p className="account">Add an animal you would like to see in your time here at the park!</p>
             <form onSubmit={handleSubmit}>
-                <h5 className="form">Name</h5>
-                <div><input className="form_input" onChange={handleUpdateName} type="text" value={formName} placeholder="game title..."/></div>
-                <h5 className="form">Image</h5>
-                <div><input className="form_input" onChange={handleUpdateImage} type="text" value={formImage} placeholder="game image url..."/></div>
-                <h5 className="form">Population</h5>
-                <div><input className="form_input" onChange={handleUpdatePopulation} type="text" value={formPopulation} placeholder="game rating..."/></div>
-                <h5 className="form">Fact</h5>
-                <div><input className="form_input" onChange={handleUpdateFact} type="text" value={formFact} placeholder="game creator..."/></div>
+                <h5 className="account">Name</h5>
+                <div><input className="form_input" onChange={handleUpdateName} type="text" value={formName} placeholder="animal species..."/></div>
+                <h5 className="account">Image</h5>
+                <div><input className="form_input" onChange={handleUpdateImage} type="text" value={formImage} placeholder="animal image url..."/></div>
+                <h5 className="account">Population</h5>
+                <div><input className="form_input" onChange={handleUpdatePopulation} type="text" value={formPopulation} placeholder="animal population..."/></div>
+                <h5 className="account">Fact</h5>
+                <div><input className="form_input" onChange={handleUpdateFact} type="text" value={formFact} placeholder="animal fact..."/></div>
                 <div><button className="form_button" type="submit">SUBMIT</button></div>
             </form>
         </div>
