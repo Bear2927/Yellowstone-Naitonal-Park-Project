@@ -1,6 +1,6 @@
 import React from "react";
 
-function GeyserItem ({geyser, handleRemoveGeyser, handleWishListItem, wishList}) {
+function GeyserItem ({geyser, handleRemoveGeyser, handleWishListItem, wishList, handleRemoveItem}) {
 
     return(
         <div>
@@ -14,7 +14,7 @@ function GeyserItem ({geyser, handleRemoveGeyser, handleWishListItem, wishList})
                 <button onClick={() => handleWishListItem(geyser)}>Add to Wish List</button>
                 <button onClick={() => handleRemoveGeyser(geyser)}>Delete</button>
                 </div>) :
-                (<button>Remove from Wish List</button>)}
+                (<button onClick={() => handleRemoveItem(geyser)}>Remove from Wish List</button>)}
             </div>
         </div>
     )

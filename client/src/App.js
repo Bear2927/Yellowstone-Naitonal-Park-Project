@@ -11,8 +11,6 @@ import GeyserDirectory from "./components/GeyserDirectory";
 import WishList from "./components/WishList";
 
 function App() {
-   const [animals, setAnimals] = useState([]);
-   const [geysers, setGeysers] = useState([]);
    const [wishList, setWishList] = useState([]);
    const [user, setUser] = useState(null)
 
@@ -25,50 +23,14 @@ function App() {
       }
     });
   }, []);
-
-   
-
-  useEffect(() => {
-    fetch("/animals")
-      .then((res) => res.json())
-      .then((animals) => setAnimals(animals));
-  }, []);
-
-  useEffect(() => {
-    fetch("/geysers")
-      .then((res) => res.json())
-      .then((geysers) => setGeysers(geysers));
-  }, []);
-
-  
-  function handleRemoveAnimal(animal){
-
-    fetch(`/animals/${animal.id}`, {method: "DELETE"})
-    
-    let newAnimals = animals.filter(a => a.id !== animal.id)
-    setAnimals(newAnimals)
-
-  }
-
-  function handleRemoveGeyser(geyser){
-
-    fetch(`/geysers/${geyser.id}`, {method: "DELETE"})
-    
-    let newGeysers = geysers.filter(g => g.id !== geyser.id)
-    setGeysers(newGeysers)
-
-  }
   
   function handleRemoveItem(item) {
     setWishList(wishList.filter(i => i.id !== item.id))
-    console.log("heyyy")
   }
 
   function handleWishListItem(favoriteItem) {
     setWishList([...wishList, favoriteItem])
   }
-
-  console.log(wishList)
 
   return (
     
@@ -81,32 +43,26 @@ function App() {
           </Route>
           <Route path="/animals">
             <AnimalDirectory 
-            animals={animals} 
-            handleRemoveAnimal={handleRemoveAnimal} 
             handleWishListItem={handleWishListItem}
             wishList={wishList}
             handleRemoveItem={handleRemoveItem}
-            setAnimals={setAnimals}
             />
           </Route>
           <Route path="/geysers">
-            <GeyserDirectory 
-            geysers={geysers} 
-            handleRemoveGeyser={handleRemoveGeyser}
+            <GeyserDirectory
             handleWishListItem={handleWishListItem}
             wishList={wishList}
+            handleRemoveItem={handleRemoveItem}
             />
           </Route>
           <Route path="/wish">
             <WishList 
             wishList={wishList}
+            handleRemoveItem={handleRemoveItem}
             />
           </Route>
           <Route path="/form">
-            <SubmitForm 
-            animals={animals} 
-            setAnimals={setAnimals}
-            />
+            <SubmitForm/>
           </Route>
           <Route path="/login">
             <Login 

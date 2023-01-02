@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function AnimalItem ({animal, handleRemoveAnimal, handleWishListItem, wishList, handleRemoveItem, setAnimals, animals}) {
 

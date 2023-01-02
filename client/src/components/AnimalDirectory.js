@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AnimalItem from "./AnimalItem"
 
-function AnimalDirectory ({animals, handleRemoveAnimal, handleWishListItem, wishList, handleRemoveItem, setAnimals}) {
+function AnimalDirectory ({handleWishListItem, wishList}) {
+    
+   const [animals, setAnimals] = useState([]);
+
+   function handleRemoveAnimal(animal){
+
+    fetch(`/animals/${animal.id}`, {method: "DELETE"})
+    
+    let newAnimals = animals.filter(a => a.id !== animal.id)
+    setAnimals(newAnimals)
+
+  }
+
+    useEffect(() => {
+        fetch("/animals")
+          .then((res) => res.json())
+          .then((animals) => setAnimals(animals));
+      }, []);
 
     return(
         <div>
@@ -14,7 +31,6 @@ function AnimalDirectory ({animals, handleRemoveAnimal, handleWishListItem, wish
                     handleRemoveAnimal={handleRemoveAnimal} 
                     handleWishListItem={handleWishListItem}
                     wishList={wishList}
-                    handleRemoveItem={handleRemoveItem}
                     setAnimals={setAnimals}
                     animals={animals}
                 />))}

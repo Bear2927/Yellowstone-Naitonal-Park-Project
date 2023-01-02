@@ -17,7 +17,7 @@
   display: grid;
   grid-template-columns: repeat(var(--num-cols), 1fr);
   grid-auto-rows: var(--row-height);
-  gap: 325px 0px;
+  gap: 325px 20px;
 
 }
 
@@ -27,7 +27,6 @@
   padding: 10px;
   border: double;
   border-image: url("https://th.bing.com/th/id/OIP.6K-2vNEH-U0T6Os0QF7-7QHaE8?pid=ImgDet&rs=1") 30;
-  padding: 1px;
   border-color: rgb(79, 18, 0);
   border-width: 20px;
   margin: 5px;

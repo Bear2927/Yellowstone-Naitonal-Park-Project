@@ -1,10 +1,18 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
-function SubmitForm ({animals, setAnimals}) {
+function SubmitForm () {
+    const [animals, setAnimals] = useState([]);
     const [formName, setFormName] = useState("");
     const [formImage, setFormImage] = useState("");
     const [formPopulation, setFormPopulation] = useState("");
     const [formFact, setFormFact] = useState("");
+
+
+    useEffect(() => {
+        fetch("/animals")
+          .then((res) => res.json())
+          .then((animals) => setAnimals(animals));
+      }, []);
 
     function handleAddAnimal(){
         const newAnimal = {

@@ -2,10 +2,9 @@ import React from "react";
 import AnimalItem from "./AnimalItem";
 import GeyserItem from "./GeyserItem";
 
-function WishList ({wishList}) {
+function WishList ({wishList, handleRemoveItem}) {
 
-    let itemWish = wishList.map(item => item.population ? <AnimalItem animal={item} key={item.name}/> : <GeyserItem geyser={item} key={item.name}/>)
-    // let geyserWish = wishList.map(item => <GeyserItem geyser={item} key={item.name}/>)
+    let itemWish = wishList.map(item => item.population ? <AnimalItem animal={item} key={item.name} handleRemoveItem={handleRemoveItem}/> : <GeyserItem geyser={item} key={item.name} handleRemoveItem={handleRemoveItem}/>)
 
     return(
         <div>

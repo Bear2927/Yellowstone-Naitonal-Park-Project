@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import GeyserItem from "./GeyserItem";
 
-function GeyserDirectory ({geysers, handleRemoveGeyser, handleWishListItem, wishList}) {
+function GeyserDirectory ({handleWishListItem, wishList, handleRemoveItem}) {
+    const [geysers, setGeysers] = useState([]);
+
+    useEffect(() => {
+        fetch("/geysers")
+          .then((res) => res.json())
+          .then((geysers) => setGeysers(geysers));
+      }, []);
+
+      function handleRemoveGeyser(geyser){
+
+        fetch(`/geysers/${geyser.id}`, {method: "DELETE"})
+        
+        let newGeysers = geysers.filter(g => g.id !== geyser.id)
+        setGeysers(newGeysers)
+    
+      }
 
     return(
         <div>
@@ -13,6 +29,7 @@ function GeyserDirectory ({geysers, handleRemoveGeyser, handleWishListItem, wish
                     geyser={geyser} 
                     handleRemoveGeyser={handleRemoveGeyser} 
                     handleWishListItem={handleWishListItem}
+                    handleRemoveItem={handleRemoveItem}
                     wishList={wishList}
                 />))}
             </div>
